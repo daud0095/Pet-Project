@@ -1,0 +1,21 @@
+@startuml
+!pragma layout smetana
+hide circle
+hide methods
+skinparam classAttributeIconSize 0
+
+class User {
+   name
+}
+
+class Student {
+studentId
+}
+
+class Worker {
+workerId
+}
+
+
+
+@enduml
