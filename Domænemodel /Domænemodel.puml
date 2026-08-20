@@ -4,17 +4,32 @@ hide circle
 hide methods
 skinparam classAttributeIconSize 0
 
-class User {
-   name
-}
+object User
+object Login
+object profile
+object Product
+object Loan
+object status
+object reservation
+object Return
+object admin
 
-class Student {
-studentId
-}
 
-class Worker {
-workerId
-}
+Login --> Product
+User --> Login
+Login --> admin
+Login --> profile
+Product --> status
+status <-- Loan
+status <-- reservation
+Product --> Return
+
+
+
+
+
+
+
 
 
 
