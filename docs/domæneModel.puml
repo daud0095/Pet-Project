@@ -1,5 +1,5 @@
 @startuml
-'https://plantuml.com/use-case-diagram
+!pragma layout smetana
 
 object User
 object Login

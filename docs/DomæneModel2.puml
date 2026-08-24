@@ -1,0 +1,26 @@
+@startuml
+!pragma layout smetana
+
+
+object User
+object Student
+object Admin
+object Product
+object Loan
+object Reservation
+object Status
+
+User <|-- Student
+User <|-- Admin
+
+Student "1" -- "0..*" Loan
+Loan "0..*" -- "1" Product
+Student "1" -- "0..*" Reservation
+Reservation "0..*" -- "1" Product
+Product "0..*" -- "1" Status
+Admin "1" -- "0..*" Product : administrerer
+
+'ediedkiedk'
+
+
+@enduml
