@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+object User
+object Login
+object profile
+object Product
+object Loan
+object status
+object reservation
+object Return
+object admin
+
+
+User -->  Login
+Login -- admin
+Login -- profile
+User "1" --> "0..*" Loan
+Loan "0..*" --> "1" Product
+User "1" --> "0..*" reservation
+reservation "0..*" --> "1" Product
+Product -- status
+Product "1" --> "1..*" Return
+
+@enduml
