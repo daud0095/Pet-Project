@@ -1,0 +1,23 @@
+Funktionelle krav:
+    Brugeren skal kunne logge ind.
+    Brugeren (elev) kan se en liste over de produkter.
+    Brugeren kan søge efter produkt.
+    Brugeren kan se om produktet er ledigt eller udlånt eller reserveret.
+    Når udstyret er ledigt, kan brugeren angive afleveringsdato for udstyret
+    Brugeren har lånt udstyret.
+    Eleven kan se sine nuværende og tidligere lån.
+    Administratoren kan se alle elevernes lån.
+    Administratoren kan oprette nye udstyr eller fjerne udstyr eller ændre udstyr.
+
+Non-Funktionelle krav:
+    Systemet kontrollerer log ind oplysninger fra databasen.
+    Systemet skal være nemt for eleven.
+    Søgeresultater skal vises på max 2 sekunder.
+    Hjemmesiden skal kunne være oppe 99,9% både
+    Produktlisten skal kunne udvides uden at være “hardcoded”
+    Flere elever skal kunne være på systemet på samme tid
+    Systemet skal kunne opbevare informationer på mindst 50 elever
+
+Tekniske krav:
+    Systemet skal udvikles i Java.
+    Frontend skal udvikles med HTML, CSS og JavaScript.
