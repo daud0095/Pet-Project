@@ -20,7 +20,5 @@ Reservation "0..*" -- "1" Product
 Product "0..*" -- "1" Status
 Admin "1" -- "0..*" Product : administrerer
 
-'ediedkiedk'
-
 
 @enduml
