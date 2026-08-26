@@ -1,7 +1,6 @@
 US-1
     Som studerende vil jeg gerne kunne logge ind ved hjælp af brugernavn/email og adgangskode, så jeg kan få adgang til tilgængeligt udstyr.
         Givet at jeg ikke er oprettet eller logget ind skal jeg kunne oprette en bruger
-        Givet at jeg ikke er logget ind men er oprettet skal jeg kunne nulstille min adgangskode ved hjælp af email
         Givet at jeg ikke er logget ind skal adgangskoden ikke blive skrevet i synlig tekst når den bliver indtastet
         Givet at jeg er oprettet som bruger skal andre ikke kunne oprette en bruger med det samme brugernavn/email så jeg beholder min konto
 
@@ -19,4 +18,11 @@ US-3
 US-4
     Som studerende vil jeg gerne kunne se over mine tidligere lån, så jeg kan se hvad jeg har lånt.
         Givet når jeg logger ind, har jeg overblik, mine lån og min historik.
+
+US-5
+    Som brugere vil jeg kunne nulstille min adgangskode, så jeg kan få adgang til min konto igen, hvis jeg har glemt den.
+        Givet at jeg har glemt min adgangskode, når jeg beder om en nulstilling med min registrerede email, så får jeg en måde at oprette en ny adgangskode på.
+        Givet at jeg er i gang med en nulstilling, når jeg indtaster en ny adgangskode, så kan jeg logge ind med den nye, og den gamle virker ikke længere.
+
+
 
