@@ -1,37 +1,46 @@
 @startuml
 !pragma layout smetana
 class User{
-  username
   email
   password
-  name
 }
 
 class Student{
+  name
+  studentID
 }
 
 class Admin{
+  name
 }
 
 class Loan{
+  studentID
+  studentName
+  productID
   loanDate
   dueDate
   returnDate
-}
+  reservation
+  history
 
-class Reservation{
-  fromDate
-  toDate
 }
 
 class Category{
   name
+  type
 }
 
 class Product{
-  name
-  description
+  productName
+  productID
+  Description
   status
+
+}
+
+class History{
+  productName
 }
 
 User <|-- Student
@@ -39,9 +48,8 @@ User <|-- Admin
 
 Student "1" -- "0..*" Loan
 Loan "0..*" -- "1" Product
-Student "1" -- "0..*" Reservation
-Reservation "0..*" -- "1" Product
-Category "1" -- "0..*" Product
+Student "1" -- "0..*" Product
+
 
 Admin "1" -- "0..*" Product : manages
 @enduml
