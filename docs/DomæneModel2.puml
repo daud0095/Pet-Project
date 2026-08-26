@@ -30,15 +30,18 @@ class Category{
 
 class Product{
   name
-  Description
+  description
   status
 }
+
+User <|-- Student
+User <|-- Admin
 
 Student "1" -- "0..*" Loan
 Loan "0..*" -- "1" Product
 Student "1" -- "0..*" Reservation
 Reservation "0..*" -- "1" Product
+Category "1" -- "0..*" Product
 
 Admin "1" -- "0..*" Product : manages
-
 @enduml
