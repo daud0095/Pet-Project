@@ -1,28 +1,112 @@
-US-1
-    Som studerende vil jeg gerne kunne logge ind ved hjælp af brugernavn/email og adgangskode, så jeg kan få adgang til tilgængeligt udstyr.
-        Givet at jeg ikke er oprettet eller logget ind skal jeg kunne oprette en bruger
-        Givet at jeg ikke er logget ind skal adgangskoden ikke blive skrevet i synlig tekst når den bliver indtastet
-        Givet at jeg er oprettet som bruger skal andre ikke kunne oprette en bruger med det samme brugernavn/email så jeg beholder min konto
+    US-1 – Login og log ud
+        Som elev vil jeg kunne logge ind med email og adgangskode, så jeg kan få adgang til det tilgængelige udstyr.
+    Acceptkriterier
+        Givet at jeg er oprettet, når jeg indtaster korrekt email og adgangskode, så bliver jeg logget ind og sendt til udstyrslisten.
+        Givet at jeg indtaster forkert email eller adgangskode, når jeg forsøger at logge ind, så får jeg beskeden "Forkert adgangskode eller email", uden at det fremgår, hvilket af de to der var forkert.
+        Givet at jeg skriver min adgangskode, når jeg trykker på øje-knappen, så kan jeg se koden i klartekst.
+        Givet at jeg ikke er logget ind, når jeg prøver at åbne en side, der kræver login, så bliver jeg sendt til login-siden.
+        Givet at jeg er logget ind, når jeg trykker "Log ud", så bliver min session ryddet, og jeg kan ikke komme tilbage med browserens tilbage-knap.
+    Tasks
+        Opret en login-side med email- og adgangskodefelt.
+        Lav et endpoint, der tjekker email og adgangskode mod databasen med bcrypt.
+        Opret session ved korrekt login, og ryd den ved log ud.
+        Lav vis/skjul-knap til adgangskodefeltet.
+        Vis fejlbesked ved forkert login.
+        Send eleven til udstyrslisten efter login.
 
-US-2
-    Som studerende vil jeg gerne kunne se, hvilke udstyr der er ledig, så jeg kan låne dem.
-        Givet jeg er logget ind, når jeg klikker på “udstyr”, så skal jeg kan se deres status
-        Givet jeg er logget ind, når jeg klikker på “udstyr”, så skal jeg kunne se hvornår den næste ledige tid for hvert udstyr
+    US-2 – Se og søg udstyr
+        Som elev vil jeg kunne se, hvilket udstyr der er ledigt, så jeg kan finde det, jeg har brug for.
+    Acceptkriterier
+        Givet en liste over udstyr, når jeg kigger på et enkelt udstyr, så kan jeg se, om det er ledigt eller udlånt.
+        Givet et udlånt udstyr, når jeg ser det i listen, så kan jeg se, hvornår det forventes afleveret.
+        Givet at jeg skriver i søgefeltet, når jeg søger på et navn, så vises kun udstyr, der matcher.
+        Givet et udstyr, der er markeret som defekt eller kasseret, når jeg ser listen, så optræder det ikke.
+        Givet en søgning, der ikke matcher noget, når resultatet vises, så får jeg beskeden "Intet udstyr matcher din søgning" i stedet for en tom liste.
+    Tasks
+        Vis alt udstyr som en liste med navn, beskrivelse og status.
+        Lad eleven søge efter udstyr på navn.
+        Vis forventet afleveringsdato på udlånt udstyr.
+        Filtrér udstyr med tilstanden defekt eller kasseret fra.
+        Vis en besked ved tomt søgeresultat.
 
-US-3
-    Som admin vil jeg gerne kunne se hvem der har lånt hvad, så jeg kan holde styr på vores udstyr
-        Givet når admin logger ind, så skal admin have overblik over alle lån og datoer for lån.
-        Givet når jeg logger ind, kan jeg fjerne eller tilføje udstyr.
-        Givet jeg er logget på som admin vil jeg gerne kunne se afleveringsfrist
+    US-3 – Lån udstyr
+        Som elev vil jeg kunne låne et ledigt udstyr, så jeg kan bruge det i undervisningen.
+    Acceptkriterier
+        Givet et ledigt udstyr, når jeg trykker "Lån", så kan jeg vælge afleveringsdato og bekræfte.
+        Givet at jeg vælger en dato mere end 14 dage frem, når jeg bekræfter, så afvises lånet med en forklaring.
+        Givet at en anden har lånt udstyret i mellemtiden, når jeg bekræfter, så får jeg besked om, at det ikke længere er ledigt.
+        Givet et gennemført lån, når jeg vender tilbage til listen, så står udstyret som udlånt.
+        Givet at jeg låner, når lånet oprettes, så sættes lånedatoen til i dag. Man kan ikke låne til en fremtidig dato.
+    Tasks
+        Lav en "Lån"-knap på det enkelte udstyr.
+        Lad eleven angive afleveringsdato med 7 dage frem som standardforslag.
+        Validér at datoen ligger inden for 14 dage.
+        Gem lånet i databasen med lånedato og forventet afleveringsdato.
+        Sørg for, at det samme udstyr ikke kan lånes to gange samtidig.
 
-US-4
-    Som studerende vil jeg gerne kunne se over mine tidligere lån, så jeg kan se hvad jeg har lånt.
-        Givet når jeg logger ind, har jeg overblik, mine lån og min historik.
+    US-4 – Mine lån og historik
+        Som elev vil jeg kunne se en liste over mine nuværende og tidligere lån, så jeg har overblik over min lånehistorik.
+    Acceptkriterier
+        Givet et aktivt lån, når jeg åbner "Mine lån", så kan jeg se, hvornår jeg har lånt det, og hvornår afleveringsdatoen er.
+        Givet et afsluttet lån, når jeg åbner "Mine lån", så kan jeg se, hvornår jeg har lånt, og hvornår jeg har afleveret.
+        Givet et overskredet lån, når jeg åbner "Mine lån", så kan jeg se, hvor meget jeg har samlet i gebyrer.
+        Givet at jeg ikke har lånt noget, når jeg åbner siden, så får jeg en besked om det i stedet for en tom tabel.
+    Tasks
+        Gem elevens lån i databasen, både aktive og afsluttede.
+        Lav menupunktet "Mine lån".
+        Vis aktive lån først og derefter tidligere lån.
+        Beregn gebyr ud fra antal dages forsinkelse.
+        Sørg for, at endpointet kun henter den indloggede elevs lån, aldrig andres.
 
-US-5
-    Som brugere vil jeg kunne nulstille min adgangskode, så jeg kan få adgang til min konto igen, hvis jeg har glemt den.
-        Givet at jeg har glemt min adgangskode, når jeg beder om en nulstilling med min registrerede email, så får jeg en måde at oprette en ny adgangskode på.
-        Givet at jeg er i gang med en nulstilling, når jeg indtaster en ny adgangskode, så kan jeg logge ind med den nye, og den gamle virker ikke længere.
+    US-5 – Admin: overblik og styring af udstyr
+        Som administrator vil jeg kunne se alt udstyr og alle lån med status, så jeg kan holde styr på udstyret.
+    Acceptkriterier
+        Givet et udlånt udstyr, når jeg ser låneoversigten, så kan jeg se, hvilken elev der har lånt det.
+        Givet at jeg er logget ind som admin, når jeg åbner oversigten, så kan jeg se alle forsinkede lån og deres gebyrer.
+        Givet at jeg er logget ind som admin, når jeg administrerer udstyr, så kan jeg oprette, ændre og fjerne udstyr.
+        Givet et udstyr, der er udlånt lige nu, når jeg forsøger at fjerne det, så afvises det med en forklaring.
+        Givet at jeg er logget ind som elev, når jeg forsøger at kalde admin-funktionerne direkte, så bliver jeg afvist af serveren.
+    Tasks
+        Hent forsinkede lån fra databasen og vis dem øverst i oversigten.
+        Beregn gebyr, når et lån er mere end 2 dages forsinket.
+        Lav en "Opret udstyr"-knap, der gemmer nyt udstyr i databasen.
+        Lav en "Ændre"-knap, der opdaterer udstyr i databasen.
+        Lav en "Fjern"-knap, der sletter udstyr fra databasen, med spærring for udlånt udstyr.
+        Håndhæv admin-rollen på serveren for alle admin-endpoints.
 
+    US-6 – Admin: registrér aflevering
+        Som administrator vil jeg kunne registrere, at et udstyr er afleveret, så det bliver ledigt igen, og historikken er korrekt.
+    Acceptkriterier
+        Givet et aktivt lån, når jeg trykker "Registrér aflevering", så sættes afleveringsdatoen til i dag, og udstyret bliver ledigt.
+        Givet en aflevering, når jeg registrerer den, så kan jeg skrive en kort note om udstyrets tilstand.
+        Givet at udstyret er gået i stykker, når jeg registrerer afleveringen, så kan jeg markere det som defekt, hvorefter det ikke vises for eleverne.
+        Givet et lån, der allerede er afleveret, når jeg forsøger at aflevere det igen, så afvises det.
+    Tasks
+        Lav en "Registrér aflevering"-knap i admins låneoversigt.
+        Gem afleveringsdatoen på lånet, så udstyret bliver ledigt igen.
+        Tilføj et notefelt til afleveringen.
+        Giv admin mulighed for at sætte udstyrets tilstand til defekt.
 
+    US-7 – Admin: brugere og adgangskoder
+        Som administrator vil jeg kunne oprette elever og nulstille en elevs adgangskode, så nye elever kan komme i gang, og elever der har glemt deres kode, kan komme ind igen.
+    Acceptkriterier
+        Givet en ny elev, når jeg opretter brugeren, så kan eleven logge ind med en ny  kode.
+        Givet en elev, der har glemt sin kode, når jeg trykker "Nulstil kode", så får jeg en ny kode, jeg kan give videre.
+        Givet en midlertidig kode, når eleven logger ind med den, så bliver eleven bedt om at vælge en ny kode, før der kan fortsættes.
+        Givet en ny kode, der ikke opfylder kriterierne, når eleven gemmer den, så vises en tekst om, hvad der mangler.
+        Givet at den nye kode er gemt, når eleven prøver den gamle, så virker den ikke længere.
+    Tasks
+        Lav en brugeroversigt i admin med "Opret elev"- og "Nulstil kode"-knapper.
+        Lav en side, hvor eleven skal vælge ny adgangskode.
+        Vis kriterierne for adgangskode (min. 8 tegn, stort bogstav, lille bogstav, tal).
+        Validér kriterierne både i frontend og backend.
+        Gem den nye kode hashet, så den gamle ikke længere virker.
 
+    US-8 – Reservation (kunne-krav)
+        Bygges kun, hvis US-0 til US-7 er færdige og testede.
+        Som elev vil jeg kunne reservere et udstyr, der ikke er ledigt, så jeg er sikker på at få det, når det bliver afleveret.
+    Acceptkriterier
+        Givet et udlånt udstyr, når jeg ser det, så kan jeg se, hvornår det forventes ledigt igen, og reservere det.
+        Givet en reservation, når udstyret afleveres, så får jeg besked i systemet om, at det er klar.
+        Givet et udstyr, der allerede er reserveret af en anden, når jeg ser det, så kan jeg se det og stille mig i kø.
+        Bemærk: reservationer kræver, at I kan regne på ledighed frem i tiden, og at status på udstyr bliver mere end ledig/udlånt/defekt. Det er derfor, den ligger som kunne-krav.

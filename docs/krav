@@ -1,23 +1,43 @@
-Funktionelle krav:
-    Brugeren skal kunne logge ind.
-    Brugeren (elev) kan se en liste over de produkter.
-    Brugeren kan søge efter produkt.
-    Brugeren kan se om produktet er ledigt eller udlånt eller reserveret.
-    Når udstyret er ledigt, kan brugeren angive afleveringsdato for udstyret
-    Brugeren har lånt udstyret.
+Funktionelle krav
+    Eleven kan logge ind og logge ud.
+    Systemet skelner mellem elev og administrator og begrænser adgang derefter.
+    Eleven kan se en liste over udstyret.
+    Eleven kan søge efter udstyr på navn.
+    Eleven kan se, om et udstyr er ledigt eller udlånt, og hvornår udlånt udstyr forventes afleveret.
+    Eleven kan låne et ledigt udstyr og angive afleveringsdato.
+    Systemet forhindrer, at det samme udstyr udlånes to gange samtidig.
     Eleven kan se sine nuværende og tidligere lån.
-    Administratoren kan se alle elevernes lån.
-    Administratoren kan oprette nye udstyr eller fjerne udstyr eller ændre udstyr.
+    Administratoren kan registrere, at et udstyr er afleveret, og skrive en kort note om tilstanden.
+    Administratoren kan markere et udstyr som defekt, så det ikke vises for eleverne.
+    Administratoren kan se alle elevers lån, herunder hvem der har lånt hvad, og hvilke lån der er forsinkede.
+    Administratoren kan oprette, ændre og fjerne udstyr.
+    Administratoren kan oprette elever og nulstille en elevs adgangskode.
+    Systemet beregner et gebyr, når et lån er mere end 2 dage forsinket, og viser det.
+    Systemet kontrollerer login-oplysninger mod databasen.
 
-Non-Funktionelle krav:
-    Systemet kontrollerer log ind oplysninger fra databasen.
-    Systemet skal være nemt for eleven.
-    Søgeresultater skal vises på max 2 sekunder.
-    Hjemmesiden skal kunne være oppe 99,9% både
-    Produktlisten skal kunne udvides uden at være “hardcoded”
-    Flere elever skal kunne være på systemet på samme tid
-    Systemet skal kunne opbevare informationer på mindst 50 elever
+Non-funktionelle krav
+    Brugbarhed
+        En ny elev kan finde og låne et udstyr uden vejledning på under 2 minutter. Testes med mindst 3 personer, der ikke har set systemet før.
 
-Tekniske krav:
-    Systemet skal udvikles i Java.
-    Frontend skal udvikles med HTML, CSS og JavaScript.
+    Ydelse og kapacitet
+        Søgeresultater vises på under 500 ms ved 500 udstyrsenheder og 10 samtidige brugere.
+        Mindst 20 elever skal kunne bruge systemet samtidig uden fejl.
+        Systemet skal kunne opbevare mindst 200 elever og 500 udstyrsenheder.
+        Systemet skal kunne køre en hel skoledag uden genstart og uden tab af data.
+
+    Vedligehold
+        Udstyrslisten kan udvides via systemet uden ændringer i koden. Alt udstyr ligger i databasen.
+
+    Sikkerhed
+        Adgangskoder gemmes hashet med bcrypt og aldrig i klartekst.
+        Adgangskoder må ikke fremgå af logfiler eller fejlbeskeder.
+        En adgangskode skal være mindst 8 tegn og indeholde stort bogstav, lille bogstav og tal.
+        Adgangskontrol håndhæves på serveren. Det er ikke nok at skjule knapper i brugergrænsefladen.
+
+Tekniske krav
+    Backend udvikles i Java med Spring Boot.
+    Backend udstiller et REST-API, der sender og modtager JSON.
+    Frontend udvikles med HTML, CSS og JavaScript og kalder API'et med fetch.
+    Data gemmes i en relationel database i MySQL.
+    Login beskyttes med en serverside-session.
+    Koden ligger i et Git-repository med en README.
