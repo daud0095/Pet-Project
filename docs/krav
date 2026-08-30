@@ -9,25 +9,21 @@ Funktionelle krav
     Eleven kan se sine nuværende og tidligere lån.
     Administratoren kan registrere, at et udstyr er afleveret, og skrive en kort note om tilstanden.
     Administratoren kan markere et udstyr som defekt, så det ikke vises for eleverne.
-    Administratoren kan se alle elevers lån, herunder hvem der har lånt hvad, og hvilke lån der er forsinkede.
+    Administratoren kan se alle elevers lån, herunder hvem der har lånt hvad, og hvilke lån der er forsinket.
     Administratoren kan oprette, ændre og fjerne udstyr.
     Administratoren kan oprette elever og nulstille en elevs adgangskode.
     Systemet beregner et gebyr, når et lån er mere end 2 dage forsinket, og viser det.
     Systemet kontrollerer login-oplysninger mod databasen.
-
 Non-funktionelle krav
     Brugbarhed
         En ny elev kan finde og låne et udstyr uden vejledning på under 2 minutter. Testes med mindst 3 personer, der ikke har set systemet før.
-
     Ydelse og kapacitet
         Søgeresultater vises på under 500 ms ved 500 udstyrsenheder og 10 samtidige brugere.
         Mindst 20 elever skal kunne bruge systemet samtidig uden fejl.
         Systemet skal kunne opbevare mindst 200 elever og 500 udstyrsenheder.
         Systemet skal kunne køre en hel skoledag uden genstart og uden tab af data.
-
     Vedligehold
         Udstyrslisten kan udvides via systemet uden ændringer i koden. Alt udstyr ligger i databasen.
-
     Sikkerhed
         Adgangskoder gemmes hashet med bcrypt og aldrig i klartekst.
         Adgangskoder må ikke fremgå af logfiler eller fejlbeskeder.
@@ -35,9 +31,8 @@ Non-funktionelle krav
         Adgangskontrol håndhæves på serveren. Det er ikke nok at skjule knapper i brugergrænsefladen.
 
 Tekniske krav
-    Backend udvikles i Java med Spring Boot.
-    Backend udstiller et REST-API, der sender og modtager JSON.
-    Frontend udvikles med HTML, CSS og JavaScript og kalder API'et med fetch.
-    Data gemmes i en relationel database i MySQL.
-    Login beskyttes med en serverside-session.
+    Backend udvikles i Java
+    Frontend udvikles med HTML, CSS og JavaScript
+    Data gemmes i en relationel database i PostGresQL eller SQLite
+    Login beskyttes med kryptering eller anden form for sikkerhed.
     Koden ligger i et Git-repository med en README.
